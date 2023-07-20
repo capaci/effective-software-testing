@@ -4,3 +4,5 @@ virtualenv/
 
 .pytest_cache/
 *.pyc
+
+.hypothesis
