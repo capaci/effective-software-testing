@@ -40,7 +40,8 @@ def test_reject_single_estimate():
 
 @given(
     st.lists(
-        st.tuples(
+        st.builds(
+            Estimate,
             st.text(min_size=1, max_size=2),
             st.integers(2, 99)
         ),
@@ -54,18 +55,12 @@ def test_many_estimates(estimates):
     With the parameters, we ensure the estimates will always be in the range 2..99
     Then we insert 1 and 100 to ensure the min and max estimates are known.
     """
-    estimates_input = [
-        Estimate(estimate[0], estimate[1])
-        for estimate in 
-    estimates]
+    estimates.append(Estimate('MinDev', 1))
+    estimates.append(Estimate('MaxDev', 100))
 
-    estimates_input.append(Estimate('MinDev', 1))
-    estimates_input.append(Estimate('MaxDev', 100))
+    shuffle(estimates)
 
-    shuffle(estimates_input)
-
-    result = identify_extremes(estimates_input)
-
+    result = identify_extremes(estimates)
 
     assert len(result) == 2
     assert 'MinDev' in result
