@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "effective-software-testing"
+version = "0.1.0"
+description = ""
+authors = ["Rafael Capaci <rafaelcapacipereira@gmail.com>"]
+readme = "README.md"
+packages = [{include = "effective_software_testing"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+ipython = "^8.14.0"
+ipdb = "^0.13.13"
+hypothesis = "^6.82.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

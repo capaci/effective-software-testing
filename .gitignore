@@ -1,0 +1,6 @@
+.venv/
+venv/
+virtualenv/
+
+.pytest_cache/
+*.pyc
