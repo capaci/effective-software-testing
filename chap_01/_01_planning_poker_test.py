@@ -38,6 +38,22 @@ def test_reject_single_estimate():
         identify_extremes([Estimate('Eleanor', 1)])
 
 
+def test_developers_with_the_same_estimate():
+    estimates: list[Estimate] = [
+        Estimate('A', 10),
+        Estimate('B', 5),
+        Estimate('C', 10),
+        Estimate('D', 7),
+        Estimate('E', 5),
+    ]
+
+    result = identify_extremes(estimates)
+
+    assert len(result) == 2
+    assert 'A' in result
+    assert 'B' in result
+
+
 def test_all_developers_with_the_same_estimate():
     estimates: list[Estimate] = [
         Estimate('A', 10),
