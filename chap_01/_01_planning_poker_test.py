@@ -6,7 +6,7 @@ import pytest
 from ._01_planning_poker import identify_extremes, Estimate
 
 
-def test_basic_case():
+def test_simple_case():
     estimates: list[Estimate] = [
         Estimate('A', 5),
         Estimate('B', 15),
@@ -36,6 +36,22 @@ def test_reject_empty_list():
 def test_reject_single_estimate():
     with pytest.raises(ValueError, match='There has to be more than 1 estimate in the list'):
         identify_extremes([Estimate('Eleanor', 1)])
+
+
+def test_all_developers_with_the_same_estimate():
+    estimates: list[Estimate] = [
+        Estimate('A', 10),
+        Estimate('B', 10),
+        Estimate('C', 10),
+        Estimate('D', 10),
+        Estimate('E', 10),
+        Estimate('F', 10),
+    ]
+
+    result = identify_extremes(estimates)
+
+    assert isinstance(result, list)
+    assert len(result) == 0
 
 
 @given(

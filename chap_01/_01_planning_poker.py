@@ -26,6 +26,9 @@ def identify_extremes(estimates: list[Estimate]) -> list[str]:
         if lowest is None or estimate.value < lowest.value:
             lowest = estimate 
 
+    if lowest.value == highest.value:
+        return []
+
     return [
         lowest.developer,
         highest.developer
